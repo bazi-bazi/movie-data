@@ -15,6 +15,13 @@ const useStyles = makeStyles({
   tabs: {
     paddingTop: "15px",
   },
+
+  typo: {
+    marginLeft: "25px",
+    marginRight: "25px",
+    fontFamily: "Lexend Peta",
+    color: "#EAD59F",
+  },
 });
 
 export default function Header() {
@@ -31,17 +38,22 @@ export default function Header() {
         className={classNames(classes.tabs)}
         value={value}
         onChange={handleChange}
-        indicatorColor="primary"
-        textColor="primary"
+        indicatorColor="secondary"
+        textColor="secondary"
         centered
       >
-        <Tab label="Item One" />
-        <Tab label="Item Two" />
-        <Typography align="center" variant="h3" color="primary">
-          Movie Database
+        <Tab label="Movies" disableRipple />
+        <Tab label="Shorts" disableRipple />
+        <Typography
+          align="center"
+          variant="h3"
+          color="textColor"
+          className={classes.typo}
+        >
+          Movies
         </Typography>
-        <Tab label="Item Three" />
-        <Tab label="Item Three" />
+        <Tab label="Anime" disableRipple />
+        <Tab label="Documentary" disableRipple />
       </Tabs>
     </Paper>
   );
