@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -6,6 +6,10 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
+import MovieList from "../movielist";
+import Shorts from "../Shorts";
+import Anime from "../anime";
+import Documentary from "../documentary";
 
 const useStyles = makeStyles({
   root: {
@@ -26,7 +30,7 @@ const useStyles = makeStyles({
 
 export default function Header() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -43,6 +47,7 @@ export default function Header() {
         centered
       >
         <Tab label="Movies" disableRipple />
+
         <Tab label="Shorts" disableRipple />
         <Typography
           align="center"
@@ -55,6 +60,10 @@ export default function Header() {
         <Tab label="Anime" disableRipple />
         <Tab label="Documentary" disableRipple />
       </Tabs>
+      {value === 0 && <MovieList />}
+      {value === 1 && <Shorts />}
+      {value === 3 && <Anime />}
+      {value === 4 && <Documentary />}
     </Paper>
   );
 }
