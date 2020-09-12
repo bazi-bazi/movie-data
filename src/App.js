@@ -5,6 +5,7 @@ import MovieList from "./components/movielist";
 import Shorts from "./components/Shorts";
 import Anime from "./components/anime";
 import Documentary from "./components/documentary";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 function App() {
   return (
