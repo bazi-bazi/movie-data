@@ -8,10 +8,6 @@ import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
 import city from "./city.jpg";
 
-const data = {
-  title: "Movie Title",
-};
-
 const useStyles = makeStyles({
   root: {
     mminWidth: 345,
@@ -35,14 +31,14 @@ const useStyles = makeStyles({
   },
 });
 
-const Movie = () => {
+const Movie = ({ title }) => {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+
   return (
     <Card className={classes.root}>
       <CardContent>
         <Typography variant="h5" component="h2">
-          {data.title}
+          {title}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
           adjective

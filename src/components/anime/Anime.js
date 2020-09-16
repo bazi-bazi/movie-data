@@ -1,11 +1,8 @@
-import React from "react";
-import { Grid, Paper } from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Movie from "../movie";
-
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 
 const useStyles = makeStyles({
   gutter: {
@@ -18,50 +15,36 @@ const useStyles = makeStyles({
   },
 });
 
-const responsive = {
-  superLargeDesktop: {
-    breakpoint: { max: 4000, min: 3000 },
-    items: 4,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 4,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 4,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 2,
-  },
-};
-
-const movies = [1, 2, 3, 4, 5, 6, 7];
-
 const Anime = () => {
   const classes = useStyles();
+
+  const apiKey = "7da5e26fd03a8f191f5db478f3ff1dd2";
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const [movies, setMovies] = useState([]);
+
+  const getData = async () => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+    );
+    const data = await response.json();
+    setMovies(data.results);
+    console.log(data.results);
+  };
 
   return (
     <>
       <Grid container>
         <Grid xs={0} sm={2} />
         <Grid xs={12} sm={8}>
-          <Carousel
-            responsive={responsive}
-            autoPlay={false}
-            arrows={true}
-            centerMode={true}
-            className={classes.gutter}
-            itemClass="carousel-item-padding-40-px"
-            containerClass="carousel-container"
-          >
-            {movies.map((movie) => (
-              <div key={movie.toString()}>
-                <Movie />
-              </div>
-            ))}
-          </Carousel>
+          {movies.map((movie) => (
+            <div key={movie.toString()}>
+              <Movie title={movie.title} />
+            </div>
+          ))}
         </Grid>
         <Grid xs={0} sm={8} />
       </Grid>
