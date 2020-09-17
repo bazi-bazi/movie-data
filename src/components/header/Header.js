@@ -7,9 +7,9 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import MovieList from "../movielist";
-import Shorts from "../Shorts";
-import Anime from "../anime";
-import Documentary from "../documentary";
+import Upcoming from "../upcoming";
+import Popular from "../popular";
+import Toprated from "../toprated";
 
 const useStyles = makeStyles({
   root: {
@@ -48,7 +48,7 @@ export default function Header() {
       >
         <Tab label="Movies" disableRipple />
 
-        <Tab label="Shorts" disableRipple />
+        <Tab label="Upcoming" disableRipple />
         <Typography
           align="center"
           variant="h3"
@@ -57,13 +57,13 @@ export default function Header() {
         >
           Movies
         </Typography>
-        <Tab label="Anime" disableRipple />
-        <Tab label="Documentary" disableRipple />
+        <Tab label="Popular" disableRipple />
+        <Tab label="Top Rated" disableRipple />
       </Tabs>
       {value === 0 && <MovieList />}
-      {value === 1 && <Shorts />}
-      {value === 3 && <Anime />}
-      {value === 4 && <Documentary />}
+      {value === 1 && <Upcoming />}
+      {value === 3 && <Popular />}
+      {value === 4 && <Toprated />}
     </Paper>
   );
 }

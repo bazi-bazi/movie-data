@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Carousel from "react-elastic-carousel";
 import Movie from "../movie";
 
 const useStyles = makeStyles({
   gutter: {
-    paddingTop: "170px",
+    paddingTop: "70px",
     alignItems: "center",
   },
   sizes: {
@@ -45,6 +45,9 @@ const Anime = () => {
       <Grid container>
         <Grid xs={0} sm={2} />
         <Grid xs={12} sm={8}>
+          <Typography className={classes.gutter} variant="h3" align="center">
+            Popular Movies
+          </Typography>
           <Carousel breakPoints={breakPoints} className={classes.gutter}>
             {movies.map((movie) => (
               <div key={movie.toString()}>
