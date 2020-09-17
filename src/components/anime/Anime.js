@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
+import Carousel from "react-elastic-carousel";
 import Movie from "../movie";
 
 const useStyles = makeStyles({
@@ -35,16 +35,28 @@ const Anime = () => {
     console.log(data.results);
   };
 
+  const breakPoints = [
+    { width: 500, itemsToShow: 1 },
+    { width: 768, itemsToShow: 4 },
+  ];
+
   return (
     <>
       <Grid container>
         <Grid xs={0} sm={2} />
         <Grid xs={12} sm={8}>
-          {movies.map((movie) => (
-            <div key={movie.toString()}>
-              <Movie title={movie.title} />
-            </div>
-          ))}
+          <Carousel breakPoints={breakPoints} className={classes.gutter}>
+            {movies.map((movie) => (
+              <div key={movie.toString()}>
+                <Movie
+                  title={movie.title}
+                  release={movie.release_date}
+                  overview={movie.overview}
+                  image={movie.poster_path}
+                />
+              </div>
+            ))}
+          </Carousel>
         </Grid>
         <Grid xs={0} sm={8} />
       </Grid>
