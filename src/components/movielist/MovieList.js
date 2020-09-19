@@ -5,10 +5,9 @@ import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
-import FormControl from "@material-ui/core/FormControl";
+import Movie from "../movie";
 
 import Divider from "@material-ui/core/Divider";
-import DirectionsIcon from "@material-ui/icons/Directions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,12 +30,23 @@ const useStyles = makeStyles((theme) => ({
   gutter: {
     paddingTop: "50px",
   },
+  movieText: {
+    marginTop: "50px",
+  },
+  movieStyle: {
+    marginTop: "50px",
+    marginBottom: "50px",
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 }));
 
 const MovieList = () => {
   const classes = useStyles();
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState([""]);
   const [dateSubmit, setDataSubmit] = useState("");
 
   // API
@@ -93,6 +103,30 @@ const MovieList = () => {
                 </IconButton>
               </form>
             </Paper>
+            <div>
+              {movies == undefined ? (
+                <Typography
+                  align="center"
+                  className={classes.movieText}
+                  variant="overline"
+                >
+                  There is no movie yet
+                </Typography>
+              ) : (
+                <div className={classes.movieStyle}>
+                  {movies.map((movie) => (
+                    <div key={movie.toString()}>
+                      <Movie
+                        title={movie.title}
+                        release={movie.release_date}
+                        overview={movie.overview}
+                        image={movie.poster_path}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </Grid>
         <Grid xs={0} sm={2} />
