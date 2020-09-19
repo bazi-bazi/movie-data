@@ -24,14 +24,14 @@ const Shorts = () => {
     getData();
   }, []);
 
-  const [moviess, setMoviess] = useState([]);
+  const [movies, setMovies] = useState([]);
 
   const getData = async () => {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`
     );
     const data = await response.json();
-    setMoviess(data.results);
+    setMovies(data.results);
     console.log(data.results);
   };
 
@@ -54,7 +54,7 @@ const Shorts = () => {
             Upcoming Movies
           </Typography>
           <Carousel breakPoints={breakPoints} className={classes.gutter}>
-            {moviess.map((movie) => (
+            {movies.map((movie) => (
               <div key={movie.toString()}>
                 <Movie
                   title={movie.title}

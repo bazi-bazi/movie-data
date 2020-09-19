@@ -5,6 +5,8 @@ import InputBase from "@material-ui/core/InputBase";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import Grid from "@material-ui/core/Grid";
+import Divider from "@material-ui/core/Divider";
+import DirectionsIcon from "@material-ui/icons/Directions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,7 +39,11 @@ const Search = () => {
         <Grid xs={0} sm={2} />
         <Grid xs={12} sm={8}>
           <div className={classes.gutter}>
-            <Paper component="form" className={classes.root}>
+            <Paper
+              component="form"
+              className={classes.root}
+              onSubmit={dateSubmit}
+            >
               <IconButton
                 type="submit"
                 className={classes.iconButton}
@@ -46,10 +52,25 @@ const Search = () => {
                 <SearchIcon />
               </IconButton>
               <InputBase
+                type="text"
+                onChange={onChange}
                 className={classes.input}
                 placeholder="Search Movies"
                 inputProps={{ "aria-label": "search Movies" }}
               />
+              <IconButton
+                type="submit"
+                className={classes.iconButton}
+                aria-label="search"
+              ></IconButton>
+              <Divider className={classes.divider} orientation="vertical" />
+              <IconButton
+                color="primary"
+                className={classes.iconButton}
+                aria-label="directions"
+              >
+                <DirectionsIcon />
+              </IconButton>
             </Paper>
           </div>
         </Grid>
