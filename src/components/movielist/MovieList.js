@@ -54,6 +54,7 @@ const MovieList = () => {
 
   // API
   const apiKey = "7da5e26fd03a8f191f5db478f3ff1dd2";
+
   useEffect(() => {
     getData();
   }, [dateSubmit]);
@@ -107,7 +108,7 @@ const MovieList = () => {
               </form>
             </Paper>
             <div>
-              {movies == undefined ? (
+              {movies === undefined ? (
                 <Typography
                   align="center"
                   className={classes.movieText}

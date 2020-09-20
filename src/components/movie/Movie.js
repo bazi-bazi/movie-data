@@ -53,6 +53,8 @@ const Movie = ({ title, release, overview, image }) => {
     setExpanded(!expanded);
   };
 
+  const withImage = `https://image.tmdb.org/t/p/w500${image}`;
+
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -65,11 +67,7 @@ const Movie = ({ title, release, overview, image }) => {
         <div>
           <CardMedia
             className={classes.media}
-            image={
-              image == null
-                ? { noimage }
-                : `https://image.tmdb.org/t/p/w500${image}`
-            }
+            image={image == null ? noimage : withImage}
             component="img"
             alt="movie poster"
           />
