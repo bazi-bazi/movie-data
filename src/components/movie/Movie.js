@@ -3,9 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
+import noimage from "./noimage.jpg";
 
 import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -15,8 +15,9 @@ import Collapse from "@material-ui/core/Collapse";
 const useStyles = makeStyles((theme) => ({
   root: {
     mminWidth: 345,
-    marginLeft: 5,
-    marginRight: 5,
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 20,
   },
   bullet: {
     display: "inline-block",
@@ -29,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
   pos: {
     marginBottom: 12,
   },
+
   media: {
     height: "100%",
     paddingTop: "0", // 16:9
@@ -63,14 +65,18 @@ const Movie = ({ title, release, overview, image }) => {
         <div>
           <CardMedia
             className={classes.media}
-            image={`https://image.tmdb.org/t/p/w500${image}`}
+            image={
+              image == null
+                ? { noimage }
+                : `https://image.tmdb.org/t/p/w500${image}`
+            }
             component="img"
-            alt="Contemplative Reptile"
+            alt="movie poster"
           />
         </div>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Typography variant="overline">Learn More</Typography>
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,

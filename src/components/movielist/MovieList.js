@@ -33,13 +33,16 @@ const useStyles = makeStyles((theme) => ({
   movieText: {
     marginTop: "50px",
   },
-  movieStyle: {
+  movieStyles: {
     marginTop: "50px",
     marginBottom: "50px",
     display: "flex",
     flexWrap: "wrap",
     alignItems: "center",
     justifyContent: "center",
+  },
+  movieStyle: {
+    paddingBottom: "30px",
   },
 }));
 
@@ -113,7 +116,7 @@ const MovieList = () => {
                   There is no movie yet
                 </Typography>
               ) : (
-                <div className={classes.movieStyle}>
+                <div className={classes.movieStyles}>
                   {movies.map((movie) => (
                     <div key={movie.toString()}>
                       <Movie
@@ -121,6 +124,7 @@ const MovieList = () => {
                         release={movie.release_date}
                         overview={movie.overview}
                         image={movie.poster_path}
+                        className={classes.movieStyle}
                       />
                     </div>
                   ))}
