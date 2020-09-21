@@ -36,8 +36,8 @@ const Search = () => {
   return (
     <>
       <Grid item container>
-        <Grid xs={0} sm={2} />
-        <Grid xs={12} sm={8}>
+        <Grid item xs={0} sm={2} />
+        <Grid item xs={12} sm={8}>
           <div className={classes.gutter}>
             <Paper
               component="form"

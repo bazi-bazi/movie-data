@@ -36,25 +36,32 @@ const Documentary = () => {
   };
 
   const breakPoints = [
-    { width: 500, itemsToShow: 1 },
-    { width: 768, itemsToShow: 4 },
+    {
+      width: 500,
+      itemsToShow: 1,
+    },
+    {
+      width: 768,
+      itemsToShow: 4,
+    },
   ];
   return (
     <>
       <Grid container>
-        <Grid xs={0} sm={2} />
-        <Grid xs={12} sm={8}>
+        <Grid item xs={0} sm={2} />
+        <Grid item xs={12} sm={8}>
           <Typography className={classes.gutter} variant="h3" align="center">
             Top Rated Movies
           </Typography>
           <Carousel breakPoints={breakPoints} className={classes.gutter}>
             {moviess.map((movie) => (
-              <div key={movie.toString()}>
+              <div>
                 <Movie
                   title={movie.title}
                   release={movie.release_date}
                   overview={movie.overview}
                   image={movie.poster_path}
+                  key={movie.id}
                 />
               </div>
             ))}
@@ -62,7 +69,7 @@ const Documentary = () => {
         </Grid>
         <Grid xs={0} sm={8} />
       </Grid>
-      <div></div>
+      <div> </div>
     </>
   );
 };
